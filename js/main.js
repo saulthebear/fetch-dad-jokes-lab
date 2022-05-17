@@ -21,12 +21,12 @@ const fetchJoke = () => {
     })
     .then((jokeId) => {
       // use id to fetch image
-      fetch(`${url}j/${jokeId}.png`) // format url to fetch from
-        .then((response) => response.blob()) // transform response to blob
-        .then((blob) => {
-          const objectURL = URL.createObjectURL(blob) // transform blob to url
-          imageElement.src = objectURL // use object url we created as img src
-        })
+      return fetch(`${url}j/${jokeId}.png`) // format url to fetch from
+    })
+    .then((response) => response.blob()) // transform response to blob
+    .then((blob) => {
+      const objectURL = URL.createObjectURL(blob) // transform blob to url
+      imageElement.src = objectURL // use object url we created as img src
     })
     .catch((error) => console.warn("something went wrong", error))
 }
