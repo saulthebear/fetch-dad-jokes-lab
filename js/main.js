@@ -2,6 +2,7 @@
 const fetchJokeBtn = document.querySelector("#fetch-joke")
 const displayElement = document.querySelector("#joke-display")
 const imageContainer = document.querySelector("#img-container")
+const imageElement = document.querySelector("#joke-img")
 
 // Set headers for request
 const headers = new Headers()
@@ -28,9 +29,9 @@ const fetchJoke = () => {
         .then((response) => response.blob()) // transform response to blob
         .then((blob) => {
           const objectURL = URL.createObjectURL(blob) // transform blob to url
-          const imageElement = document.createElement("img") // create an HTML img element
+          // const imageElement = document.createElement("img") // create an HTML img element
           imageElement.src = objectURL // use object url we created as img src
-          imageContainer.appendChild(imageElement) // add the HTML img element to the DOM
+          // imageContainer.appendChild(imageElement) // add the HTML img element to the DOM
         })
     })
     .catch((error) => console.warn("something went wrong", error))
