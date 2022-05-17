@@ -17,16 +17,7 @@ const fetchJoke = () => {
     .then((response) => response.json()) // transform to json
     .then((json) => {
       displayElement.innerText = json.joke // get joke text and set DOM
-      return json.id // pass id on to next .then()
-    })
-    .then((jokeId) => {
-      // use id to fetch image
-      return fetch(`${url}j/${jokeId}.png`) // format url to fetch from
-    })
-    .then((response) => response.blob()) // transform response to blob
-    .then((blob) => {
-      const objectURL = URL.createObjectURL(blob) // transform blob to url
-      imageElement.src = objectURL // use object url we created as img src
+      imageElement.src = `${url}j/${json.id}.png` // Set src on image element
     })
     .catch((error) => console.warn("something went wrong", error))
 }
